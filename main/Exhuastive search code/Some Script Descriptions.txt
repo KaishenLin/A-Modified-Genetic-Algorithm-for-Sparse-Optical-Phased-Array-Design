@@ -1,0 +1,5 @@
+main:  This script uses a GA to find the best solutions.
+
+solutionspace: This script generates all possible solutions.
+
+maintest: This is the main script for exhaustive searching. It calculates the PSLL for each solution and finds the best PSLL under the same number of antennas.

@@ -1,0 +1,37 @@
+clc;
+clear;
+close;
+
+population_minmax(5,20,2,5)
+
+%Note: the last two activated positions might not meet the minDist requirement.
+function Population = population_minmax(populationSize, chromosomeSize, minDist, maxDist)
+    Population = zeros(populationSize, chromosomeSize);  
+    for i = 1:populationSize
+        chromosome = zeros(1, chromosomeSize);  
+        chromosome(1) = 1;  
+        chromosome(chromosomeSize) = 1;  
+        currentPos = 1;  
+        while currentPos < chromosomeSize
+            remainingSpace = chromosomeSize - currentPos;  
+            if remainingSpace == maxDist +1  
+                nextPos = currentPos + randi([minDist, maxDist-minDist]); 
+            else
+                nextPos = currentPos + randi([minDist, maxDist]);  
+            end
+
+            if nextPos >= chromosomeSize
+                break;
+            else
+                chromosome(nextPos) = 1;
+                currentPos = nextPos;
+            end
+
+        end
+        Population(i, :) = chromosome; 
+    end
+end
+
+
+
+
